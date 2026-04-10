@@ -40,6 +40,20 @@ background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
 }
+.center-message{
+position:absolute;
+top:27%;
+left:51%;
+transform:translate(-50%, -50%);
+background:white;
+padding:25px 40px;
+border-radius:8px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+font-size:20px;
+font-weight:600;
+text-align:center;
+z-index:5;
+}
 
 /* FOOTER */
 .footer{
@@ -63,6 +77,9 @@ letter-spacing:.5px;
 
 <!-- BACKGROUND -->
 <div class="hero"></div>
+<div class="center-message">
+Try out the Agent developed by Crosspeak Solutions
+</div>
 
 <!-- FOOTER -->
 <div class="footer">
@@ -75,8 +92,8 @@ All Rights Reserved
 
 			embeddedservice_bootstrap.init(
 				'00DgK00000B8RPl',
-				'Service_Agent_ESD',
-				'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWServiceAgentESD1757685378292',
+				'Dealer_Messaging_Setting',
+				'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
 				{
 					scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
 				}
@@ -86,8 +103,7 @@ All Rights Reserved
 		}
 	};
 </script>
-<script type='text/javascript' src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWServiceAgentESD1757685378292/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
+<script type='text/javascript' src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
