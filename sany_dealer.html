@@ -29,13 +29,13 @@ z-index:10;
 }
 
 .logo{
-height:50px;
+height:55px;
 }
 
 /* HERO BACKGROUND */
 .hero{
 flex:1;
-background-image:url('https://www.google.com/imgres?q=sany%20office%20images&imgurl=https%3A%2F%2Fwww.sanyuk.com%2Fwp-content%2Fuploads%2F2022%2F09%2Findex-about-sany.jpg&imgrefurl=https%3A%2F%2Fwww.sanyuk.com%2Fabout-sany%2F&docid=Qqp4vAVcrfqTsM&tbnid=UFk_DfKtRd3ZJM&vet=12ahUKEwickYWoluOTAxUpTWwGHY0wJgEQnPAOegQIGBAB..i&w=1432&h=643&hcb=2&ved=2ahUKEwickYWoluOTAxUpTWwGHY0wJgEQnPAOegQIGBAB');
+background-image:url('https://www.sanyuk.com/wp-content/uploads/2020/06/9.png');
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
@@ -58,7 +58,9 @@ letter-spacing:.5px;
 
 <!-- HEADER -->
 <div class="header">
-<img src="https://www.autosarena.com/sany-india-appoints-dealer-delhi-ncr/" class="logo">
+<img 
+src="https://www.autosarena.com/wp-content/uploads/2016/01/Sany-logo-600x450.png" 
+class="logo">
 </div>
 
 <!-- BACKGROUND -->
@@ -66,28 +68,33 @@ letter-spacing:.5px;
 
 <!-- FOOTER -->
 <div class="footer">
-All Rights Reserved
+© All Rights Reserved
 </div>
+
+
 <script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+function initEmbeddedMessaging() {
+try {
+embeddedservice_bootstrap.settings.language = 'en_US';
 
-			embeddedservice_bootstrap.init(
-				'00DgK00000B8RPl',
-				'Service_Agent_ESD',
-				'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWServiceAgentESD1757685378292',
-				{
-					scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
+embeddedservice_bootstrap.init(
+'00DgK00000B8RPl',
+'Service_Agent_ESD',
+'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWServiceAgentESD1757685378292',
+{
+scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
+}
+);
+} catch (err) {
+console.error('Error loading Embedded Messaging: ', err);
+}
+};
 </script>
-<script type='text/javascript' src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWServiceAgentESD1757685378292/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
+<script 
+src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWServiceAgentESD1757685378292/assets/js/bootstrap.min.js'
+onload='initEmbeddedMessaging()'>
+</script>
 
 </body>
 </html>
