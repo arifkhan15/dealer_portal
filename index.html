@@ -77,9 +77,22 @@ letter-spacing:.5px;
 </div>
 
 <!-- BACKGROUND -->
-<div class="hero"></div>
 <div class="center-message">
+
+<div id="welcomeText">
 Welcome to Sany's Dealer Portal
+</div>
+
+<div id="loginButtons" style="margin-top:15px;">
+<button onclick="loginAs('arif.khan@crosspeaksolutions.com')">
+Login as Dealer 1
+</button>
+
+<button onclick="loginAs('arifayubkhan15@gmail.com')">
+Login as Dealer 2
+</button>
+</div>
+
 </div>
 
 <!-- FOOTER -->
@@ -87,10 +100,24 @@ Welcome to Sany's Dealer Portal
 All Rights Reserved
 </div>
 <script type='text/javascript'>
+	function loginAs(email){
+
+localStorage.setItem("customerEmail", email);
+
+// hide buttons
+document.getElementById("loginButtons").style.display = "none";
+
+// show logged in message
+document.getElementById("welcomeText").innerHTML =
+"Welcome to Sany's Dealer Portal <br> Logged in as " + email;
+
+}
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.chatIcon = 'logo.png';
+			embeddedservice_bootstrap.settings.prechatHiddenFields = {
+customerEmail: localStorage.getItem("customerEmail")
+};
 
 
 			embeddedservice_bootstrap.init(
