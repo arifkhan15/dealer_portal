@@ -77,80 +77,68 @@ letter-spacing:.5px;
 </div>
 
 <!-- BACKGROUND -->
- <div class="hero">
+<div class="hero"></div>
 <div class="center-message">
-
-<div id="welcomeText">
 Welcome to Sany's Dealer Portal
 </div>
-
-<div id="loginButtons" style="margin-top:15px;">
-<button onclick="loginAs('arif.khan@crosspeaksolutions.com')">
-Login as Dealer 1
-</button>
-
-<button onclick="loginAs('arifayubkhan15@gmail.com')">
-Login as Dealer 2
-</button>
+<div style="margin-top:20px;">
+    <button onclick="setDealer('dealer1')">Login as Dealer 1</button>
+    <button onclick="setDealer('dealer2')">Login as Dealer 2</button>
 </div>
 
-</div>
-</div>
 <!-- FOOTER -->
 <div class="footer">
 All Rights Reserved
 </div>
-<script type='text/javascript'>
+<script>
+let selectedEmail = null;
 
+function setDealer(type){
+    if(type === 'dealer1'){
+        selectedEmail = "arif.khan@crosspeaksolutions.com";
+    } else {
+        selectedEmail = "arifayubkhan15@gmail.com";
+    }
+
+    console.log("Selected Dealer:", selectedEmail);
+}
+</script>
+<script>
 window.addEventListener("onEmbeddedMessagingReady", () => {
 
-    const email = localStorage.getItem("customerEmail");
-
-    if(email){
-        embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
-            "_email": {
-                value: email,
-                isEditableByEndUser: false
-            }
-        });
+    if(!selectedEmail){
+        console.warn("No dealer selected");
+        return;
     }
+
+    embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
+        "_email": {
+            value: selectedEmail,
+            isEditableByEndUser: false
+        }
+    });
+
 });
-
-function loginAs(email){
-
-    localStorage.setItem("customerEmail", email);
-
-    document.getElementById("loginButtons").style.display = "none";
-
-    document.getElementById("welcomeText").innerHTML =
-    "Welcome to Sany's Dealer Portal <br> Logged in as " + email;
-
-
-    initEmbeddedMessaging();
-}
-
-function initEmbeddedMessaging() {
-    try {
-        embeddedservice_bootstrap.settings.language = 'en_US';
-
-        embeddedservice_bootstrap.init(
-            '00DgK00000B8RPl',
-            'Dealer_Messaging_Setting',
-            'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
-            {
-                scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
-            }
-        );
-
-    } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-    }
-};
-
 </script>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-<script type='text/javascript'
-src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js'>
+			embeddedservice_bootstrap.init(
+				'00DgK00000B8RPl',
+				'Dealer_Messaging_Setting',
+				'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
+				{
+					scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
 </script>
+<script type='text/javascript' src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 </body>
 </html>
