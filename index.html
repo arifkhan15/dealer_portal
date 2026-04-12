@@ -77,6 +77,7 @@ letter-spacing:.5px;
 </div>
 
 <!-- BACKGROUND -->
+ <div class="hero">
 <div class="center-message">
 
 <div id="welcomeText">
@@ -94,46 +95,67 @@ Login as Dealer 2
 </div>
 
 </div>
-
+</div>
 <!-- FOOTER -->
 <div class="footer">
 All Rights Reserved
 </div>
 <script type='text/javascript'>
-	function loginAs(email){
 
-localStorage.setItem("customerEmail", email);
+window.addEventListener("onEmbeddedMessagingReady", () => {
 
-// hide buttons
-document.getElementById("loginButtons").style.display = "none";
+    const email = localStorage.getItem("customerEmail");
 
-// show logged in message
-document.getElementById("welcomeText").innerHTML =
-"Welcome to Sany's Dealer Portal <br> Logged in as " + email;
+    if(email){
+        embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
+            "_email": {
+                value: email,
+                isEditableByEndUser: false
+            }
+        });
+    }
+});
 
+function loginAs(email){
+
+    localStorage.setItem("customerEmail", email);
+
+    document.getElementById("loginButtons").style.display = "none";
+
+    document.getElementById("welcomeText").innerHTML =
+    "Welcome to Sany's Dealer Portal <br> Logged in as " + email;
+
+    // Reinitialize messaging AFTER login
+    if (window.embeddedservice_bootstrap) {
+        embeddedservice_bootstrap.destroy();
+    }
+
+    initEmbeddedMessaging();
 }
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.prechatHiddenFields = {
-customerEmail: localStorage.getItem("customerEmail")
+
+function initEmbeddedMessaging() {
+    try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+
+        embeddedservice_bootstrap.init(
+            '00DgK00000B8RPl',
+            'Dealer_Messaging_Setting',
+            'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
+            {
+                scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
+            }
+        );
+
+    } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+    }
 };
 
-
-			embeddedservice_bootstrap.init(
-				'00DgK00000B8RPl',
-				'Dealer_Messaging_Setting',
-				'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
-				{
-					scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
 </script>
-<script type='text/javascript' src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
+<script type='text/javascript'
+src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js'
+onload='initEmbeddedMessaging()'>
+</script>
 </body>
 </html>
