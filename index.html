@@ -125,10 +125,6 @@ function loginAs(email){
     document.getElementById("welcomeText").innerHTML =
     "Welcome to Sany's Dealer Portal <br> Logged in as " + email;
 
-    // Reinitialize messaging AFTER login
-    if (window.embeddedservice_bootstrap) {
-        embeddedservice_bootstrap.destroy();
-    }
 
     initEmbeddedMessaging();
 }
@@ -154,8 +150,7 @@ function initEmbeddedMessaging() {
 </script>
 
 <script type='text/javascript'
-src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js'
-onload='initEmbeddedMessaging()'>
+src='https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js'>
 </script>
 </body>
 </html>
