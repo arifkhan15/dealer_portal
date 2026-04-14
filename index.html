@@ -234,29 +234,40 @@
         console.log("✅ Email sent:", selectedEmail);
     }
 }
-        embeddedservice_bootstrap?.addEventHandler?.(
-            "onEmbeddedMessagingReady",
-            () => trySetPrechatEmail()
-        );
     </script>
 
     <!-- Salesforce -->
     <script>
-        function initEmbeddedMessaging() {
-            try {
-                embeddedservice_bootstrap.settings.language = 'en_US';
-                embeddedservice_bootstrap.init(
-                    '00DgK00000B8RPl',
-                    'Dealer_Messaging_Setting',
-                    'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
-                    {
-                        scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error(err);
+       function initEmbeddedMessaging() {
+    try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+
+        embeddedservice_bootstrap.init(
+            '00DgK00000B8RPl',
+            'Dealer_Messaging_Setting',
+            'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
+            {
+                scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
             }
-        }
+        );
+
+        // ✅ SAFE EVENT REGISTRATION
+        embeddedservice_bootstrap.addEventHandler(
+            "onEmbeddedMessagingReady",
+            function () {
+                if (selectedEmail) {
+                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+                        "_email": selectedEmail
+                    });
+                    console.log("✅ Email sent:", selectedEmail);
+                }
+            }
+        );
+
+    } catch (err) {
+        console.error(err);
+    }
+}
     </script>
 
     <script
