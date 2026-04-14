@@ -224,19 +224,16 @@
             }
         });
 
-        function trySetPrechatEmail() {
-            if (!selectedEmail) return;
+      function trySetPrechatEmail() {
+    if (!selectedEmail) return;
 
-            try {
-                embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-                    "_email": selectedEmail
-                });
-            } catch (e) {
-                console.warn("Bootstrap not ready yet");
-            }
-            console.log("selectedEmail----> "+selectedEmail);
-        }
-
+    if (embeddedservice_bootstrap?.prechatAPI) {
+        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+            "_email": selectedEmail
+        });
+        console.log("✅ Email sent:", selectedEmail);
+    }
+}
         embeddedservice_bootstrap?.addEventHandler?.(
             "onEmbeddedMessagingReady",
             () => trySetPrechatEmail()
@@ -248,6 +245,8 @@
         function initEmbeddedMessaging() {
             try {
                 embeddedservice_bootstrap.settings.language = 'en_US';
+                embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"_email": selectedEmail });
+
                 embeddedservice_bootstrap.init(
                     '00DgK00000B8RPl',
                     'Dealer_Messaging_Setting',
