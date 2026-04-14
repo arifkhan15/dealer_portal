@@ -229,11 +229,12 @@
 
             try {
                 embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-                    "Email": selectedEmail
+                    "_email": selectedEmail
                 });
             } catch (e) {
                 console.warn("Bootstrap not ready yet");
             }
+            console.log(selectedEmail);
         }
 
         embeddedservice_bootstrap?.addEventHandler?.(
