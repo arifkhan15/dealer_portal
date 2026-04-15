@@ -232,19 +232,18 @@
        function initEmbeddedMessaging() {
     try {
         embeddedservice_bootstrap.settings.language = 'en_US';
-        // ✅ SAFE EVENT REGISTRATION
-        window.addEventListener("onEmbeddedMessagingReady", function() {
-    console.log("Embedded Messaging is ready");
+       embeddedservice_bootstrap.addEventHandler(
+    "onEmbeddedMessagingReady",
+    function () {
+        console.log("Embedded Messaging is ready");
 
-    // Give LWC time to dispatch the event
-    
         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-            "_email": 'arif.khan@crosspeaksolutions.com',       // ✔ matches Messaging config + Flow mapping
-            
+            "_email": "arif.khan@crosspeaksolutions.com"
         });
 
-});
-
+        console.log("✅ Email injected");
+    }
+);
 
         embeddedservice_bootstrap.init(
             '00DgK00000B8RPl',
