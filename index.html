@@ -228,7 +228,7 @@
     </script>
 
     <!-- Salesforce -->
-    <script>
+    <!--<script>
        function initEmbeddedMessaging() {
     try {
         embeddedservice_bootstrap.settings.language = 'en_US';
@@ -264,7 +264,46 @@
     <script
         src="https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js"
         onload="initEmbeddedMessaging()">
-    </script>
+    </script>-->
 
+<script>
+function initEmbeddedMessaging() {
+    try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+
+        window.addEventListener("onEmbeddedMessagingReady", function () {
+            console.log("Embedded Messaging is ready");
+
+            setTimeout(function () {
+                if (embeddedservice_bootstrap?.prechatAPI) {
+                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+                        "_email": "arif.khan@crosspeaksolutions.com"
+                    });
+                    console.log("Hidden prechat field set");
+                } else {
+                    console.error("Prechat API not available");
+                }
+            }, 500);
+        });
+
+        embeddedservice_bootstrap.init(
+            '00DgK00000B8RPl',
+            'Dealer_Messaging_Setting',
+            'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
+            {
+                scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
+            }
+        );
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+</script>
+
+<script
+    src="https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js"
+    onload="initEmbeddedMessaging()">
+</script>
 </body>
 </html>
