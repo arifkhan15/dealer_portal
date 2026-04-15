@@ -156,79 +156,11 @@
         Welcome to Sany's Dealer Portal
     </div>
 
-    <!-- Login Buttons -->
-    <div class="dealer-login">
-        <button class="dealer-btn" onclick="login('dealer1')">
-            Login as Arif Khan
-        </button>
-        <button class="dealer-btn" onclick="login('dealer2')">
-            Login as Test Groot
-        </button>
-    </div>
 
     <!-- Footer -->
     <div class="footer">All Rights Reserved</div>
 
     <!-- Scripts -->
-    <script>
-        let selectedEmail = "";
-        let selectedName = "";
-
-        function login(type) {
-            if (type === 'dealer1') {
-                selectedEmail = "arif.khan@crosspeaksolutions.com";
-                selectedName = "Arif Khan - v1";
-            } else {
-                selectedEmail = "arifayubkhan15@gmail.com";
-                selectedName = "Arif Khan - v2";
-            }
-
-            // Hide welcome UI
-            document.querySelector('.center-message').style.display = "none";
-
-            const loginBox = document.querySelector('.dealer-login');
-            if (loginBox) loginBox.style.display = "none";
-
-            // Show profile
-            document.getElementById('profileContainer').style.display = "block";
-
-            // Set profile info
-            document.getElementById('profileName').innerText = selectedName;
-            document.getElementById('profileEmail').innerText = selectedEmail;
-
-            // Salesforce (if available)
-            trySetPrechatEmail();
-        }
-
-        function toggleProfile() {
-            const dropdown = document.getElementById('profileDropdown');
-            dropdown.style.display =
-                dropdown.style.display === "block" ? "none" : "block";
-        }
-
-        function logout() {
-            document.querySelector('.center-message').style.display = "block";
-
-            const loginBox = document.querySelector('.dealer-login');
-            if (loginBox) loginBox.style.display = "flex";
-
-            document.getElementById('profileContainer').style.display = "none";
-            document.getElementById('profileDropdown').style.display = "none";
-
-            selectedEmail = "";
-            selectedName = "";
-        }
-
-        // Close dropdown on outside click
-        document.addEventListener('click', function (e) {
-            const profile = document.getElementById('profileContainer');
-            if (!profile.contains(e.target)) {
-                document.getElementById('profileDropdown').style.display = "none";
-            }
-        });
-
-
-    </script>
 
 
     <script>
@@ -241,11 +173,10 @@
 
                     setTimeout(function () {
                         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-                           // "customerEmail": "arif.khan@crosspeaksolutions.com"
-                           "customerEmail": selectedEmail
+                            "customerEmail": "arif.khan@crosspeaksolutions.com"
 
                         });
-                    }, 500); 
+                    }, 500);
                 });
 
 
@@ -271,6 +202,6 @@
         onload="initEmbeddedMessaging()">
         </script>
 
-    < </body>
+</body>
 
 </html>
