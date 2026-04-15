@@ -267,24 +267,26 @@
     </script>-->
 
 <script>
+function setPrechatWhenReady() {
+    if (window.embeddedservice_bootstrap && embeddedservice_bootstrap.prechatAPI) {
+        console.log("Setting prechat EARLY");
+
+        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+            "_email": "arif.khan@crosspeaksolutions.com"
+        });
+
+    } else {
+        // keep trying until API is available
+        setTimeout(setPrechatWhenReady, 50);
+    }
+}
+
 function initEmbeddedMessaging() {
     try {
         embeddedservice_bootstrap.settings.language = 'en_US';
 
-        window.addEventListener("onEmbeddedMessagingReady", function () {
-            console.log("Embedded Messaging is ready");
-
-            setTimeout(function () {
-                if (embeddedservice_bootstrap?.prechatAPI) {
-                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-                        "_email": "arif.khan@crosspeaksolutions.com"
-                    });
-                    console.log("Hidden prechat field set");
-                } else {
-                    console.error("Prechat API not available");
-                }
-            }, 500);
-        });
+        // ✅ CRITICAL: start setting prechat BEFORE init
+        setPrechatWhenReady();
 
         embeddedservice_bootstrap.init(
             '00DgK00000B8RPl',
