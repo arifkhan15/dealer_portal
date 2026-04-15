@@ -232,18 +232,17 @@
        function initEmbeddedMessaging() {
     try {
         embeddedservice_bootstrap.settings.language = 'en_US';
-       embeddedservice_bootstrap.addEventHandler(
-    "onEmbeddedMessagingReady",
-    function () {
-        console.log("Embedded Messaging is ready");
+        // ✅ SAFE EVENT REGISTRATION
+       window.addEventListener("onEmbeddedMessagingReady", function() {
+    console.log("Embedded Messaging is ready");
 
+    setTimeout(function () {
         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
             "_email": "arif.khan@crosspeaksolutions.com"
         });
+    }, 500); // small delay ensures API is ready
+});
 
-        console.log("✅ Email injected");
-    }
-);
 
         embeddedservice_bootstrap.init(
             '00DgK00000B8RPl',
