@@ -224,16 +224,7 @@
             }
         });
 
-      function trySetPrechatEmail() {
-    if (!selectedEmail) return;
-
-    if (embeddedservice_bootstrap?.prechatAPI) {
-        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-            "_email": selectedEmail
-        });
-        console.log("✅ Email sent:", selectedEmail);
-    }
-}
+    
     </script>
 
     <!-- Salesforce -->
@@ -248,7 +239,7 @@
     // Give LWC time to dispatch the event
     
         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-            "_Email": selectedEmail,       // ✔ matches Messaging config + Flow mapping
+            "_email": 'arif.khan@crosspeaksolutions.com',       // ✔ matches Messaging config + Flow mapping
             
         });
 
