@@ -242,20 +242,19 @@
     try {
         embeddedservice_bootstrap.settings.language = 'en_US';
         // ✅ SAFE EVENT REGISTRATION
-        console.log('Hi Message From SF')
-        console.log('selectedEmail'+ 'arif.khan@crosspeaksolutions.com');
+        window.addEventListener("onEmbeddedMessagingReady", function() {
+    console.log("Embedded Messaging is ready");
 
-        embeddedservice_bootstrap.addEventHandler(
-            "onEmbeddedMessagingReady",
-            function () {
-                if (selectedEmail) {
-                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-                        "_email": selectedEmail
-                    });
-                    console.log("✅ Email sent:", selectedEmail);
-                }
-            }
-        );
+    // Give LWC time to dispatch the event
+    
+        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+            "_Email": selectedEmail,       // ✔ matches Messaging config + Flow mapping
+            
+        });
+
+        console.log("Injected User Email >>> " + email);
+});
+
 
         embeddedservice_bootstrap.init(
             '00DgK00000B8RPl',
