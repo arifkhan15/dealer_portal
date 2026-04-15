@@ -227,8 +227,8 @@
     
     </script>
 
-    <!-- Salesforce -->
-    <!--<script>
+   
+    <script>
        function initEmbeddedMessaging() {
     try {
         embeddedservice_bootstrap.settings.language = 'en_US';
@@ -238,7 +238,7 @@
 
     setTimeout(function () {
         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-            "_email": "arif.khan@crosspeaksolutions.com"
+            "customerEmail": "arif.khan@crosspeaksolutions.com"
         });
     }, 500); // small delay ensures API is ready
 });
@@ -264,48 +264,8 @@
     <script
         src="https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js"
         onload="initEmbeddedMessaging()">
-    </script>-->
+    </script>
 
-<script>
-function setPrechatWhenReady() {
-    if (window.embeddedservice_bootstrap && embeddedservice_bootstrap.prechatAPI) {
-        console.log("Setting prechat EARLY");
-
-        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-            "_email": "arif.khan@crosspeaksolutions.com"
-        });
-
-    } else {
-        // keep trying until API is available
-        setTimeout(setPrechatWhenReady, 50);
-    }
-}
-
-function initEmbeddedMessaging() {
-    try {
-        embeddedservice_bootstrap.settings.language = 'en_US';
-
-        // ✅ CRITICAL: start setting prechat BEFORE init
-        setPrechatWhenReady();
-
-        embeddedservice_bootstrap.init(
-            '00DgK00000B8RPl',
-            'Dealer_Messaging_Setting',
-            'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
-            {
-                scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
-            }
-        );
-
-    } catch (err) {
-        console.error(err);
-    }
-}
-</script>
-
-<script
-    src="https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539/assets/js/bootstrap.min.js"
-    onload="initEmbeddedMessaging()">
-</script>
+<
 </body>
 </html>
