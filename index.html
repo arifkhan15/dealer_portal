@@ -241,19 +241,9 @@
        function initEmbeddedMessaging() {
     try {
         embeddedservice_bootstrap.settings.language = 'en_US';
-
-        embeddedservice_bootstrap.init(
-            '00DgK00000B8RPl',
-            'Dealer_Messaging_Setting',
-            'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
-            {
-                scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
-            }
-        );
-
         // ✅ SAFE EVENT REGISTRATION
         console.log('Hi Message From SF')
-        console.log('selectedEmail'+selectedEmail);
+        console.log('selectedEmail'+ 'arif.khan@crosspeaksolutions.com');
 
         embeddedservice_bootstrap.addEventHandler(
             "onEmbeddedMessagingReady",
@@ -266,6 +256,17 @@
                 }
             }
         );
+
+        embeddedservice_bootstrap.init(
+            '00DgK00000B8RPl',
+            'Dealer_Messaging_Setting',
+            'https://agentic-developer-edition-dev-ed.develop.my.site.com/ESWDealerMessagingSetti1775820284539',
+            {
+                scrt2URL: 'https://agentic-developer-edition-dev-ed.develop.my.salesforce-scrt.com'
+            }
+        );
+
+        
 
     } catch (err) {
         console.error(err);
